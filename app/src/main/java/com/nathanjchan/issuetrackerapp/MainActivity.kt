@@ -1,4 +1,4 @@
-package com.example.issuetrackerapp
+package com.nathanjchan.issuetrackerapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

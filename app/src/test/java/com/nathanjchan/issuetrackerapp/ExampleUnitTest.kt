@@ -1,4 +1,4 @@
-package com.example.issuetrackerapp
+package com.nathanjchan.issuetrackerapp
 
 import org.junit.Test
 
