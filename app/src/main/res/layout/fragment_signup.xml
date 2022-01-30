@@ -12,12 +12,12 @@
         android:padding="32dp">
 
         <TextView
-            android:id="@+id/textViewSignupMessage"
+            android:id="@+id/signupMessageTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/editTextSignupEmail"
+            android:id="@+id/signupEmailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -27,7 +27,7 @@
             android:autofillHints="" />
 
         <EditText
-            android:id="@+id/editTextSignupPassword"
+            android:id="@+id/signupPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -37,7 +37,7 @@
             android:autofillHints="" />
 
         <EditText
-            android:id="@+id/editTextTextSignupConfirmPassword"
+            android:id="@+id/signupConfirmPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
@@ -48,7 +48,7 @@
             android:textColorHint="#757575" />
 
         <Button
-            android:id="@+id/buttonSignup"
+            android:id="@+id/signupButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"

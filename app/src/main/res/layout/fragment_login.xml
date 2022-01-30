@@ -13,12 +13,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textViewLoginMessage"
+            android:id="@+id/loginMessageTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/editTextLoginEmail"
+            android:id="@+id/loginEmailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
@@ -28,7 +28,7 @@
             android:padding="16dp" />
 
         <EditText
-            android:id="@+id/editTextLoginPassword"
+            android:id="@+id/loginPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
@@ -38,19 +38,22 @@
             android:padding="16dp" />
 
         <Button
-            android:id="@+id/buttonLogin"
+            android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="@string/log_in" />
 
-        <TextView
-            android:id="@+id/textViewLoginToSignup"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/loginToSignupButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:elegantTextHeight="false"
+            android:foregroundGravity="center"
             android:padding="16dp"
             android:text="@string/click_here_to_sign_up"
-            android:textSize="16sp" />
+            android:textColor="@color/black" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
