@@ -1,4 +1,4 @@
 package com.nathanjchan.issuetrackerapp.data.source
 
-class AccountsRemoveDataSource {
+class AccountsRemoteDataSource {
 }
