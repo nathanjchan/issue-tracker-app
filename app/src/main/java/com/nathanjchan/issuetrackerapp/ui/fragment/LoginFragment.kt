@@ -31,13 +31,19 @@ class LoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         binding = FragmentLoginBinding.bind(view)
 
-        // Navigate to Tickets Fragment if UI state is logged in.
+        // Navigate to certain Fragment depending on UI state.
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { uiState ->
-                    if (uiState.isLoggedIn) {
-                        val action = LoginFragmentDirections.actionLoginFragmentToTicketsFragment()
-                        findNavController().navigate(action)
+                    when {
+                        uiState.isLoggedIn -> {
+                            val action = LoginFragmentDirections.actionLoginFragmentToTicketsFragment()
+                            findNavController().navigate(action)
+                        }
+                        uiState.goToSignup -> {
+                            val action = LoginFragmentDirections.actionLoginFragmentToSignupFragment()
+                            findNavController().navigate(action)
+                        }
                     }
                 }
             }
@@ -50,10 +56,9 @@ class LoginFragment : Fragment() {
             viewModel.attemptLogin(email, password)
         }
 
-        // Navigate to Signup Fragment if user presses signup button.
+        // Go to signup if user pressed signup button.
         binding.loginToSignupButton.setOnClickListener {
-            val action = LoginFragmentDirections.actionLoginFragmentToSignupFragment()
-            findNavController().navigate(action)
+            viewModel.wantsToSignUp()
         }
 
         return view

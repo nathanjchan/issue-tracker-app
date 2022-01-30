@@ -20,6 +20,12 @@ class LoginViewModel(accountsRepository: AccountsRepository) : ViewModel() {
         }
     }
 
+    fun wantsToSignUp() {
+        _uiState.update { currentUiState ->
+            currentUiState.copy(goToSignup = true)
+        }
+    }
+
     fun attemptLogin(email: String, password: String) {
 
     }
