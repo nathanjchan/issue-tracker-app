@@ -14,7 +14,7 @@ class LoginViewModel : ViewModel() {
     private val accountsRepository = AccountsRepository()
 
     init {
-        if (!accountsRepository.hasAccountInfoChanged()) {
+        if (!accountsRepository.needNewAccountInfo()) {
             _uiState.update { currentUiState ->
                 currentUiState.copy(isLoggedIn = true)
             }

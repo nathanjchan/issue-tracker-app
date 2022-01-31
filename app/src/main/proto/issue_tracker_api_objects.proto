@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+message Ticket {
+  int64 ticketId = 1;
+  int64 timestampOfCreation = 2; // epoch timestamp in milliseconds
+  int64 timestampOfLastEdit = 3;
+  string title = 4;
+  string description = 5;
+  int32 ticketNumber = 6; // number in the project
+  int64 projectId = 7;
+  int64 accountIdOfCreator = 8;
+  int64 accountIdOfAssignee = 9;
+}
+
+message Project {
+  int64 projectId = 1;
+  int64 timestampOfCreation = 2;
+  int64 timestampOfLastEdit = 3;
+  string title = 4;
+  string description = 5;
+  repeated int64 ticketIds = 6;
+  repeated int64 accountIdsOfOwners = 7;
+  repeated int64 accountIdsOfMembers = 8;
+}
+
+message Account {
+  int64 accountId = 1;
+  int64 timestampOfCreation = 2;
+  int64 timestampOfLastEdit = 3;
+  string email = 4;
+  string password = 5;
+  repeated int64 ticketIdsAsCreator = 6;
+  repeated int64 ticketIdsAsAssignee = 7;
+  repeated int64 projectIdsAsOwner = 8;
+  repeated int64 projectIdsAsMember = 9;
+}
