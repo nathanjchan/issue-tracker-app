@@ -37,11 +37,7 @@ class LoginFragmentTest {
         }
 
         // Verify that clicking signup button changes NavController's state to Signup Fragment.
-        onView(ViewMatchers.withId(R.id.signupButton)).perform(ViewActions.click())
-        Assert.assertEquals(navController.currentDestination?.id, R.id.loginFragment)
-
-        // Verify that clicking the back button changes the NavController's state to Login Fragment.
-        onView(ViewMatchers.doesNotHaveFocus()).perform(ViewActions.pressBack())
+        onView(ViewMatchers.withId(R.id.loginToSignupButton)).perform(ViewActions.click())
         Assert.assertEquals(navController.currentDestination?.id, R.id.signupFragment)
     }
 
@@ -62,12 +58,7 @@ class LoginFragmentTest {
                 }
             }
         }
-        // Verify that clicking signup button changes NavController's state to Signup Fragment.
         onView(ViewMatchers.withId(R.id.loginToSignupButton)).perform(ViewActions.click())
-        Assert.assertEquals(navController.currentDestination?.id, R.id.loginFragment)
-
-        // Verify that clicking the back button changes the NavController's state to Login Fragment.
-        onView(ViewMatchers.doesNotHaveFocus()).perform(ViewActions.pressBack())
         Assert.assertEquals(navController.currentDestination?.id, R.id.signupFragment)
     }
 }
