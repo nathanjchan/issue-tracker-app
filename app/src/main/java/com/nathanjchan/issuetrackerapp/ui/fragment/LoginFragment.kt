@@ -13,9 +13,11 @@ import androidx.navigation.fragment.findNavController
 import com.nathanjchan.issuetrackerapp.R
 import com.nathanjchan.issuetrackerapp.databinding.FragmentLoginBinding
 import com.nathanjchan.issuetrackerapp.ui.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding

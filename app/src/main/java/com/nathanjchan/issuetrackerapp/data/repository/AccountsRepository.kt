@@ -1,12 +1,13 @@
 package com.nathanjchan.issuetrackerapp.data.repository
 
 import com.nathanjchan.issuetrackerapp.data.model.AccountApiModel
+import javax.inject.Inject
 
-class AccountsRepository {
+class AccountsRepository @Inject constructor() {
     val cachedAccount: AccountApiModel? = null
 
     fun hasAccountInfoChanged(): Boolean {
-        return false
+        return true
     }
 
     fun isValidAccount(email: String, password: String) {

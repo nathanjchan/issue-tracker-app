@@ -3,12 +3,15 @@ package com.nathanjchan.issuetrackerapp.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import com.nathanjchan.issuetrackerapp.data.repository.AccountsRepository
 import com.nathanjchan.issuetrackerapp.ui.state.LoginUiState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
-class LoginViewModel(accountsRepository: AccountsRepository) : ViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor(accountsRepository: AccountsRepository) : ViewModel() {
     private val _uiState = MutableStateFlow(LoginUiState())
     val uiState: StateFlow<LoginUiState> = _uiState.asStateFlow()
 
