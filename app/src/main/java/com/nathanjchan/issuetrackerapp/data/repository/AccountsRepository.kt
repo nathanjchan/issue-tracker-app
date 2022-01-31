@@ -6,7 +6,7 @@ class AccountsRepository {
     val cachedAccount: AccountApiModel? = null
 
     fun hasAccountInfoChanged(): Boolean {
-        return false
+        return true
     }
 
     fun isValidAccount(email: String, password: String) {

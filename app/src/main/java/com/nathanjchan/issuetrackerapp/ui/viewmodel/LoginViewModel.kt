@@ -8,9 +8,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class LoginViewModel(accountsRepository: AccountsRepository) : ViewModel() {
+class LoginViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(LoginUiState())
     val uiState: StateFlow<LoginUiState> = _uiState.asStateFlow()
+    private val accountsRepository = AccountsRepository()
 
     init {
         if (!accountsRepository.hasAccountInfoChanged()) {
