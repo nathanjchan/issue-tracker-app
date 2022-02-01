@@ -8,5 +8,5 @@ data class ProjectApiModel(
     val description: String,
     val ticketIds: List<Long>,
     val accountIdsOfOwners: List<Long>,
-    val accountsIdsOfMembers: List<Long>,
+    val accountIdsOfMembers: List<Long>,
 )
