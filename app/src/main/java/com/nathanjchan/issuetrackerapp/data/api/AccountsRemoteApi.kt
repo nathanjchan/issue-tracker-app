@@ -1,36 +1,34 @@
 package com.nathanjchan.issuetrackerapp.data.api
 
 import IssueTrackerApiObjects
-import com.nathanjchan.issuetrackerapp.data.model.AccountApiModel
+import com.nathanjchan.issuetrackerapp.data.api.retrofitconverterprotobuf.ProtoConverterFactory
+import retrofit2.Call
+import retrofit2.Retrofit
+import retrofit2.http.Body
+import retrofit2.http.GET
 
 interface AccountsRemoteApi {
-    private fun createAccountProtobuf(account: AccountApiModel): ByteArray {
-        val accountProtobuf = IssueTrackerApiObjects.Account.newBuilder()
-            .setAccountId(account.accountId)
-            .setTimestampOfCreation(account.timestampOfCreation)
-            .setTimestampOfLastEdit(account.timestampOfLastEdit)
-            .setEmail(account.email)
-            .setPassword(account.password)
-        account.ticketIdsAsCreator.forEachIndexed { i, value ->
-            accountProtobuf.setTicketIdsAsCreator(i, value)
+
+    @GET("")
+    fun getAccount(@Body account: IssueTrackerApiObjects.Account) : Call<IssueTrackerApiObjects.Account>
+
+    companion object {
+        var BASE_URL = ""
+
+        fun create() : AccountsRemoteApi {
+            val retrofit = Retrofit.Builder()
+                .addConverterFactory(ProtoConverterFactory.create())
+                .baseUrl(BASE_URL)
+                .build()
+            return retrofit.create(AccountsRemoteApi::class.java)
         }
-        account.ticketIdsAsAssignee.forEachIndexed { i, value ->
-            accountProtobuf.setTicketIdsAsAssignee(i, value)
-        }
-        account.projectIdsAsOwner.forEachIndexed { i, value ->
-            accountProtobuf.setProjectIdsAsOwner(i, value)
-        }
-        account.projectIdsAsMember.forEachIndexed { i, value ->
-            accountProtobuf.setProjectIdsAsMember(i, value)
-        }
-        return accountProtobuf.build().toByteArray()
     }
 
-    fun postAccount(account: AccountApiModel) {
+//    fun postAccount(account: AccountApiModel) {
 //        val accountByteArray = createAccountProtobuf(account)
-    }
+//    }
 
-    fun getAccount(account: AccountApiModel) {
+//    fun getAccount(account: AccountApiModel) {
 //        val accountByteArray = createAccountProtobuf(account)
-    }
+//    }
 }

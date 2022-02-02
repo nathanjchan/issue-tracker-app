@@ -1,13 +1,12 @@
 package com.nathanjchan.issuetrackerapp.data.model
 
-data class TicketApiModel(
-    val ticketId: Long,
+data class ProjectModel(
+    val projectId: Long,
     val timestampOfCreation: Long,
     val timestampOfLastEdit: Long,
     val title: String,
     val description: String,
-    val ticketNumber: Int,
-    val projectId: Long,
-    val accountIdOfCreator: Long,
-    val accountIdOfAssignee: Long,
+    val ticketIds: List<Long>,
+    val accountIdsOfOwners: List<Long>,
+    val accountIdsOfMembers: List<Long>,
 )

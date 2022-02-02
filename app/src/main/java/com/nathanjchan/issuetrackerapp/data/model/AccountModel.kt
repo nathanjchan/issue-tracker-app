@@ -1,6 +1,6 @@
 package com.nathanjchan.issuetrackerapp.data.model
 
-data class AccountApiModel(
+data class AccountModel(
     val accountId: Long,
     val timestampOfCreation: Long,
     val timestampOfLastEdit: Long,

@@ -1,9 +1,9 @@
 package com.nathanjchan.issuetrackerapp.data.api
 
-import com.nathanjchan.issuetrackerapp.data.model.ProjectApiModel
+import com.nathanjchan.issuetrackerapp.data.model.ProjectModel
 
 interface ProjectsRemoteApi {
-    private fun createProjectProtobuf(project: ProjectApiModel): ByteArray {
+    private fun createProjectProtobuf(project: ProjectModel): ByteArray {
         val projectProtobuf = IssueTrackerApiObjects.Project.newBuilder()
             .setProjectId(project.projectId)
             .setTimestampOfCreation(project.timestampOfCreation)
@@ -22,11 +22,11 @@ interface ProjectsRemoteApi {
         return projectProtobuf.build().toByteArray()
     }
 
-    fun postProject(project: ProjectApiModel) {
+    fun postProject(project: ProjectModel) {
 //        val projectByteArray = createProjectProtobuf(project)
     }
 
-    fun getProject(project: ProjectApiModel) {
+    fun getProject(project: ProjectModel) {
 //        val projectByteArray = createProjectProtobuf(project)
     }
 }

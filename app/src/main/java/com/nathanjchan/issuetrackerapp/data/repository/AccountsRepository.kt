@@ -1,9 +1,9 @@
 package com.nathanjchan.issuetrackerapp.data.repository
 
-import com.nathanjchan.issuetrackerapp.data.model.AccountApiModel
+import com.nathanjchan.issuetrackerapp.data.model.AccountModel
 
 class AccountsRepository {
-    private val cachedAccount: AccountApiModel? = null
+    private val cachedAccount: AccountModel? = null
 
     init {
         // Fetch cached account from AccountsLocalDataSource
@@ -20,7 +20,7 @@ class AccountsRepository {
         return false
     }
 
-    fun isValidAccount(email: String, password: String) {
-
-    }
+//    fun isValidAccount(email: String, password: String) {
+//
+//    }
 }
