@@ -3,6 +3,7 @@ package com.nathanjchan.issuetrackerapp.data.source
 import IssueTrackerApiObjects
 import com.nathanjchan.issuetrackerapp.data.api.AccountsRemoteApi
 import com.nathanjchan.issuetrackerapp.data.model.AccountModel
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,20 +48,24 @@ class AccountsRemoteDataSource {
     fun getAccount(account: AccountModel): AccountModel? {
         val accountProtobuf = getAccountProtobufFromModel(account)
         val accountsRemoteApi = AccountsRemoteApi.create().getAccount(accountProtobuf)
-        var accountModel: AccountModel? = null
-        accountsRemoteApi.enqueue( object : Callback<IssueTrackerApiObjects.Account> {
-            override fun onResponse(
-                call: Call<IssueTrackerApiObjects.Account>,
-                response: Response<IssueTrackerApiObjects.Account>
-            ) {
-                response.body()?.run {
-                    accountModel = getAccountModelFromProtobuf(this)
-                }
-            }
-            override fun onFailure(call: Call<IssueTrackerApiObjects.Account>, t: Throwable) {
-                // nothing yet
-            }
-        })
-        return accountModel
+//        accountsRemoteApi.enqueue( object : Callback<IssueTrackerApiObjects.Account> {
+//            override fun onResponse(
+//                call: Call<IssueTrackerApiObjects.Account>,
+//                response: Response<IssueTrackerApiObjects.Account>
+//            ) {
+//                response.body()?.run {
+//                    accountModel = getAccountModelFromProtobuf(this)
+//                }
+//            }
+//            override fun onFailure(call: Call<IssueTrackerApiObjects.Account>, t: Throwable) {
+//                // nothing yet
+//            }
+//        })
+        return accountsRemoteApi.execute().body()?.let { getAccountModelFromProtobuf(it) }
+    }
+
+    fun getHelloString(): String {
+        val accountsRemoteApi = AccountsRemoteApi.create().getHelloString()
+        return accountsRemoteApi.execute().body().toString()
     }
 }

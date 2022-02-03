@@ -1,4 +1,4 @@
-package com.nathanjchan.issuetrackerapp.data.api.retrofitconverterprotobuf;
+package com.nathanjchan.issuetrackerapp.data.api.retrofitconverter;
 
 /*
  * Copyright (C) 2015 Square, Inc.

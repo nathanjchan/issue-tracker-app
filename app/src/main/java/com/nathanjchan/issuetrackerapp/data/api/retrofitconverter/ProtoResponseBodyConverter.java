@@ -1,4 +1,4 @@
-package com.nathanjchan.issuetrackerapp.data.api.retrofitconverterprotobuf;
+package com.nathanjchan.issuetrackerapp.data.api.retrofitconverter;
 
 /*
  * Copyright (C) 2015 Square, Inc.
@@ -22,7 +22,7 @@ import com.google.protobuf.ExtensionRegistryLite;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 import com.google.protobuf.Parser;
-import java.io.IOException;
+
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
 
