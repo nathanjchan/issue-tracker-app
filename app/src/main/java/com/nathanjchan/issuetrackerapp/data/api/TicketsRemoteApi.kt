@@ -1,27 +1,34 @@
 package com.nathanjchan.issuetrackerapp.data.api
 
-import com.nathanjchan.issuetrackerapp.data.model.TicketModel
+import IssueTrackerApiObjects
+import com.nathanjchan.issuetrackerapp.data.api.retrofitconverter.ProtoConverterFactory
+import retrofit2.Call
+import retrofit2.Retrofit
+import retrofit2.http.Body
+import retrofit2.http.GET
 
 interface TicketsRemoteApi {
-    private fun createTicketProtobuf(ticket: TicketModel): ByteArray {
-        val ticketProtobuf = IssueTrackerApiObjects.Ticket.newBuilder()
-            .setTicketId(ticket.ticketId)
-            .setTimestampOfCreation(ticket.timestampOfCreation)
-            .setTimestampOfLastEdit(ticket.timestampOfLastEdit)
-            .setTitle(ticket.title)
-            .setDescription(ticket.description)
-            .setTicketNumber(ticket.ticketNumber)
-            .setProjectId(ticket.projectId)
-            .setAccountIdOfCreator(ticket.accountIdOfCreator)
-            .setAccountIdOfAssignee(ticket.accountIdOfAssignee)
-        return ticketProtobuf.build().toByteArray()
+
+    @GET("")
+    fun getTicket(@Body ticketProtobuf: IssueTrackerApiObjects.Ticket): Call<IssueTrackerApiObjects.Ticket>
+
+    companion object {
+        private const val BASE_URL = "http://54.241.64.13:8090/"
+
+        fun create(): TicketsRemoteApi {
+            return Retrofit.Builder()
+                .addConverterFactory(ProtoConverterFactory.create())
+                .baseUrl(BASE_URL)
+                .build()
+                .create(TicketsRemoteApi::class.java)
+        }
     }
 
-    fun postTicket(ticket: TicketModel) {
+//    fun postTicket(ticket: TicketModel) {
 //        val ticketByteArray = createTicketProtobuf(ticket)
-    }
+//    }
 
-    fun getTicket(ticket: TicketModel) {
+//    fun getTicket(ticket: TicketModel) {
 //        val ticketByteArray = createTicketProtobuf(ticket)
-    }
+//    }
 }

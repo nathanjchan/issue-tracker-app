@@ -1,7 +1,7 @@
 package com.nathanjchan.issuetrackerapp.data.api
 
+import IssueTrackerApiObjects
 import com.nathanjchan.issuetrackerapp.data.api.retrofitconverter.ScalarsConverterFactory
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.http.Body
@@ -16,15 +16,15 @@ interface AccountsRemoteApi {
     fun getHelloString() : Call<String>
 
     companion object {
-        var BASE_URL = "http://54.241.64.13:8090/"
+        private const val BASE_URL = "http://54.241.64.13:8090/"
 
         fun create() : AccountsRemoteApi {
-            val retrofit = Retrofit.Builder()
+            return Retrofit.Builder()
 //                .addConverterFactory(ProtoConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .baseUrl(BASE_URL)
                 .build()
-            return retrofit.create(AccountsRemoteApi::class.java)
+                .create(AccountsRemoteApi::class.java)
         }
     }
 

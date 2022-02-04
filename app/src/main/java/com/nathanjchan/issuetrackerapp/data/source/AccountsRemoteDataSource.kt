@@ -9,59 +9,45 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AccountsRemoteDataSource {
+
     private fun getAccountProtobufFromModel(accountModel: AccountModel): IssueTrackerApiObjects.Account {
-        val accountProtobuf = IssueTrackerApiObjects.Account.newBuilder()
-            .setAccountId(accountModel.accountId)
-            .setTimestampOfCreation(accountModel.timestampOfCreation)
-            .setTimestampOfLastEdit(accountModel.timestampOfLastEdit)
-            .setEmail(accountModel.email)
-            .setPassword(accountModel.password)
-        accountModel.ticketIdsAsCreator.forEachIndexed { i, value ->
-            accountProtobuf.setTicketIdsAsCreator(i, value)
+        accountModel.run {
+            return IssueTrackerApiObjects.Account.newBuilder()
+                .setAccountId(accountId)
+                .setTimestampOfCreation(timestampOfCreation)
+                .setTimestampOfLastEdit(timestampOfLastEdit)
+                .setEmail(email)
+                .setPassword(password)
+                .addAllTicketIdsAsCreator(ticketIdsAsCreator)
+                .addAllTicketIdsAsAssignee(ticketIdsAsAssignee)
+                .addAllProjectIdsAsOwner(projectIdsAsOwner)
+                .addAllProjectIdsAsMember(projectIdsAsMember)
+                .build()
         }
-        accountModel.ticketIdsAsAssignee.forEachIndexed { i, value ->
-            accountProtobuf.setTicketIdsAsAssignee(i, value)
-        }
-        accountModel.projectIdsAsOwner.forEachIndexed { i, value ->
-            accountProtobuf.setProjectIdsAsOwner(i, value)
-        }
-        accountModel.projectIdsAsMember.forEachIndexed { i, value ->
-            accountProtobuf.setProjectIdsAsMember(i, value)
-        }
-        return accountProtobuf.build()
     }
 
     private fun getAccountModelFromProtobuf(accountProtobuf: IssueTrackerApiObjects.Account): AccountModel {
-        return AccountModel(
-            accountId = accountProtobuf.accountId,
-            timestampOfCreation = accountProtobuf.timestampOfCreation,
-            timestampOfLastEdit = accountProtobuf.timestampOfLastEdit,
-            email = accountProtobuf.email,
-            password = accountProtobuf.password,
-            ticketIdsAsCreator = accountProtobuf.ticketIdsAsCreatorList,
-            ticketIdsAsAssignee = accountProtobuf.ticketIdsAsAssigneeList,
-            projectIdsAsOwner = accountProtobuf.projectIdsAsOwnerList,
-            projectIdsAsMember = accountProtobuf.projectIdsAsMemberList
-        )
+        accountProtobuf.run {
+            return AccountModel(
+                accountId = accountId,
+                timestampOfCreation = timestampOfCreation,
+                timestampOfLastEdit = timestampOfLastEdit,
+                email = email,
+                password = password,
+                ticketIdsAsCreator = ticketIdsAsCreatorList,
+                ticketIdsAsAssignee = ticketIdsAsAssigneeList,
+                projectIdsAsOwner = projectIdsAsOwnerList,
+                projectIdsAsMember = projectIdsAsMemberList
+            )
+        }
     }
 
-    fun getAccount(account: AccountModel): AccountModel? {
-        val accountProtobuf = getAccountProtobufFromModel(account)
+    fun getAccount(accountModel: AccountModel): AccountModel? {
+        val accountProtobuf = getAccountProtobufFromModel(accountModel)
         val accountsRemoteApi = AccountsRemoteApi.create().getAccount(accountProtobuf)
-//        accountsRemoteApi.enqueue( object : Callback<IssueTrackerApiObjects.Account> {
-//            override fun onResponse(
-//                call: Call<IssueTrackerApiObjects.Account>,
-//                response: Response<IssueTrackerApiObjects.Account>
-//            ) {
-//                response.body()?.run {
-//                    accountModel = getAccountModelFromProtobuf(this)
-//                }
-//            }
-//            override fun onFailure(call: Call<IssueTrackerApiObjects.Account>, t: Throwable) {
-//                // nothing yet
-//            }
-//        })
-        return accountsRemoteApi.execute().body()?.let { getAccountModelFromProtobuf(it) }
+        return accountsRemoteApi.execute().body()?.let {
+            getAccountModelFromProtobuf(it)
+        }
     }
 
     fun getHelloString(): String {

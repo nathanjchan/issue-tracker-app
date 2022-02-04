@@ -1,32 +1,34 @@
 package com.nathanjchan.issuetrackerapp.data.api
 
-import com.nathanjchan.issuetrackerapp.data.model.ProjectModel
+import IssueTrackerApiObjects
+import com.nathanjchan.issuetrackerapp.data.api.retrofitconverter.ProtoConverterFactory
+import retrofit2.Call
+import retrofit2.Retrofit
+import retrofit2.http.Body
+import retrofit2.http.GET
 
 interface ProjectsRemoteApi {
-    private fun createProjectProtobuf(project: ProjectModel): ByteArray {
-        val projectProtobuf = IssueTrackerApiObjects.Project.newBuilder()
-            .setProjectId(project.projectId)
-            .setTimestampOfCreation(project.timestampOfCreation)
-            .setTimestampOfLastEdit(project.timestampOfLastEdit)
-            .setTitle(project.title)
-            .setDescription(project.description)
-        project.ticketIds.forEachIndexed { i, value ->
-            projectProtobuf.setTicketIds(i, value)
+
+    @GET("")
+    fun getProject(@Body project: IssueTrackerApiObjects.Project) : Call<IssueTrackerApiObjects.Project>
+
+    companion object {
+        private const val BASE_URL = "http://54.241.64.13:8090/"
+
+        fun create(): ProjectsRemoteApi {
+            return Retrofit.Builder()
+                .addConverterFactory(ProtoConverterFactory.create())
+                .baseUrl(BASE_URL)
+                .build()
+                .create(ProjectsRemoteApi::class.java)
         }
-        project.accountIdsOfOwners.forEachIndexed { i, value ->
-            projectProtobuf.setAccountIdsOfOwners(i, value)
-        }
-        project.accountIdsOfMembers.forEachIndexed {i, value ->
-            projectProtobuf.setAccountIdsOfMembers(i, value)
-        }
-        return projectProtobuf.build().toByteArray()
     }
 
-    fun postProject(project: ProjectModel) {
+//    fun postProject(project: ProjectModel) {
 //        val projectByteArray = createProjectProtobuf(project)
-    }
+//    }
 
-    fun getProject(project: ProjectModel) {
+//    fun getProject(project: ProjectModel) {
 //        val projectByteArray = createProjectProtobuf(project)
-    }
+//    }
 }
