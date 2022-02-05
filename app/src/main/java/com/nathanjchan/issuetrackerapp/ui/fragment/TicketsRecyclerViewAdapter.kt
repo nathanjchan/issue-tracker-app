@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nathanjchan.issuetrackerapp.R
 import com.nathanjchan.issuetrackerapp.data.model.TicketModel
 
-class TicketsRecyclerViewAdapter(private val dataSet: Array<TicketModel>) :
+class TicketsRecyclerViewAdapter(private val ticketsDataSet: Array<TicketModel>) :
     RecyclerView.Adapter<TicketsRecyclerViewAdapter.ViewHolder>() {
 
     /**
@@ -32,9 +32,11 @@ class TicketsRecyclerViewAdapter(private val dataSet: Array<TicketModel>) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.ticketRowTextView.text = dataSet[position].toString()
+        val ticket = ticketsDataSet[position]
+        val ticketString = "${ticket.ticketNumber}: ${ticket.title}"
+        viewHolder.ticketRowTextView.text = ticketString
     }
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = dataSet.size
+    override fun getItemCount() = ticketsDataSet.size
 }
