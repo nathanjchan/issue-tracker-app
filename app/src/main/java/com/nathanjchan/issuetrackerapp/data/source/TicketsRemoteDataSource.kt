@@ -41,7 +41,8 @@ class TicketsRemoteDataSource {
 
     fun getTicket(ticketModel: TicketModel): TicketModel? {
         val ticketProtobuf = getTicketProtobufFromModel(ticketModel)
-        val ticketsRemoteApi = TicketsRemoteApi.create().getTicket(ticketProtobuf)
+//        val ticketsRemoteApi = TicketsRemoteApi.create().getTicket(ticketProtobuf)
+        val ticketsRemoteApi = TicketsRemoteApi.create().getTicket()
         return ticketsRemoteApi.execute().body()?.let {
             getTicketModelFromProtobuf(it)
         }

@@ -9,8 +9,10 @@ import retrofit2.http.GET
 
 interface TicketsRemoteApi {
 
-    @GET("")
-    fun getTicket(@Body ticketProtobuf: IssueTrackerApiObjects.Ticket): Call<IssueTrackerApiObjects.Ticket>
+    @GET("get-proto")
+//    fun getTicket(@Body ticketProtobuf: IssueTrackerApiObjects.Ticket): Call<IssueTrackerApiObjects.Ticket>
+    fun getTicket(): Call<IssueTrackerApiObjects.Ticket>
+
 
     companion object {
         private const val BASE_URL = "http://54.241.64.13:8090/"
