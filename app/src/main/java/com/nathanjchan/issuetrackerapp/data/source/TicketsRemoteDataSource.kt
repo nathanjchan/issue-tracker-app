@@ -37,10 +37,10 @@ class TicketsRemoteDataSource {
         }
     }
 
-
-
-    fun getTicket(ticketModel: TicketModel): TicketModel? {
-        val ticketProtobuf = getTicketProtobufFromModel(ticketModel)
+    fun getTicket(): TicketModel? {
+        // TODO: Should take in a ticketId for API call.
+        // TODO: Have a getTickets function that calls this function for many ticketIds.
+//        val ticketProtobuf = getTicketProtobufFromModel(ticketModel)
 //        val ticketsRemoteApi = TicketsRemoteApi.create().getTicket(ticketProtobuf)
         val ticketsRemoteApi = TicketsRemoteApi.create().getTicket()
         return ticketsRemoteApi.execute().body()?.let {

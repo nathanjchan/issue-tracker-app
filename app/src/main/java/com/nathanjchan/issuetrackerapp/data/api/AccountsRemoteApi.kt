@@ -10,15 +10,15 @@ import retrofit2.http.GET
 interface AccountsRemoteApi {
 
     @GET("")
-    fun getAccount(@Body account: IssueTrackerApiObjects.Account) : Call<IssueTrackerApiObjects.Account>
+    fun getAccount(@Body account: IssueTrackerApiObjects.Account): Call<IssueTrackerApiObjects.Account>
 
     @GET("hello")
-    fun getHelloString() : Call<String>
+    fun getHelloString(): Call<String>
 
     companion object {
         private const val BASE_URL = "http://54.241.64.13:8090/"
 
-        fun create() : AccountsRemoteApi {
+        fun create(): AccountsRemoteApi {
             return Retrofit.Builder()
 //                .addConverterFactory(ProtoConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())

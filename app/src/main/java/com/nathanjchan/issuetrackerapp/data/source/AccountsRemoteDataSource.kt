@@ -3,10 +3,6 @@ package com.nathanjchan.issuetrackerapp.data.source
 import IssueTrackerApiObjects
 import com.nathanjchan.issuetrackerapp.data.api.AccountsRemoteApi
 import com.nathanjchan.issuetrackerapp.data.model.AccountModel
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class AccountsRemoteDataSource {
 

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nathanjchan.issuetrackerapp.R
 import com.nathanjchan.issuetrackerapp.data.model.TicketModel
 
-class TicketsRecyclerViewAdapter(private val ticketsDataSet: Array<TicketModel>) :
+class TicketsRecyclerViewAdapter(private val ticketsDataSet: List<TicketModel>) :
     RecyclerView.Adapter<TicketsRecyclerViewAdapter.ViewHolder>() {
 
     /**

@@ -3,7 +3,7 @@ package com.nathanjchan.issuetrackerapp.data.repository
 import com.nathanjchan.issuetrackerapp.data.model.AccountModel
 
 class AccountsRepository {
-    private val cachedAccount: AccountModel? = null
+    private var cachedAccount: AccountModel? = null
 
 //    init {
         // Fetch cached account from AccountsLocalDataSource

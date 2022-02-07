@@ -21,7 +21,7 @@ class TestTicketsRemoteDataSource {
 
     @Test
     fun testGetTicket() {
-        val newTicketModel = ticketsRemoteDataSource.getTicket(ticketModel)
+        val newTicketModel = ticketsRemoteDataSource.getTicket()
         Assert.assertNotNull(newTicketModel)
         newTicketModel?.run {
             Assert.assertEquals(title, "Lord of the Rings")

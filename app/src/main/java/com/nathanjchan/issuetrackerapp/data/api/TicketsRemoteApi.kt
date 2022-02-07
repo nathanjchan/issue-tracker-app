@@ -25,12 +25,4 @@ interface TicketsRemoteApi {
                 .create(TicketsRemoteApi::class.java)
         }
     }
-
-//    fun postTicket(ticket: TicketModel) {
-//        val ticketByteArray = createTicketProtobuf(ticket)
-//    }
-
-//    fun getTicket(ticket: TicketModel) {
-//        val ticketByteArray = createTicketProtobuf(ticket)
-//    }
 }
