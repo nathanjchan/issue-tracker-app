@@ -1,7 +1,7 @@
 package com.nathanjchan.issuetrackerapp
 
-import com.nathanjchan.issuetrackerapp.data.model.AccountModel
-import com.nathanjchan.issuetrackerapp.data.source.AccountsRemoteDataSource
+import com.nathanjchan.issuetrackerapp.data.accounts.AccountModel
+import com.nathanjchan.issuetrackerapp.data.accounts.AccountsRemoteDataSource
 import org.junit.Assert
 import org.junit.Test
 

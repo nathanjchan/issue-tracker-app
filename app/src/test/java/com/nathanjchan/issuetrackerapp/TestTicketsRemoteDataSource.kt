@@ -1,7 +1,7 @@
 package com.nathanjchan.issuetrackerapp
 
-import com.nathanjchan.issuetrackerapp.data.model.TicketModel
-import com.nathanjchan.issuetrackerapp.data.source.TicketsRemoteDataSource
+import com.nathanjchan.issuetrackerapp.data.tickets.TicketModel
+import com.nathanjchan.issuetrackerapp.data.tickets.TicketsRemoteDataSource
 import org.junit.Assert
 import org.junit.Test
 

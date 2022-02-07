@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.nathanjchan.issuetrackerapp.ui.fragment.LoginFragment"
+        android:name="com.nathanjchan.issuetrackerapp.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -23,17 +23,17 @@
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.nathanjchan.issuetrackerapp.ui.fragment.SignupFragment"
+        android:name="com.nathanjchan.issuetrackerapp.ui.signup.SignupFragment"
         android:label="fragment_signup"
         tools:layout="@layout/fragment_signup" />
     <fragment
         android:id="@+id/ticketFragment"
-        android:name="com.nathanjchan.issuetrackerapp.ui.fragment.TicketFragment"
+        android:name="com.nathanjchan.issuetrackerapp.ui.ticket.TicketFragment"
         android:label="fragment_ticket"
         tools:layout="@layout/fragment_ticket" />
     <fragment
         android:id="@+id/ticketsFragment"
-        android:name="com.nathanjchan.issuetrackerapp.ui.fragment.TicketsFragment"
+        android:name="com.nathanjchan.issuetrackerapp.ui.tickets.TicketsFragment"
         android:label="fragment_tickets"
         tools:layout="@layout/fragment_tickets" >
         <action

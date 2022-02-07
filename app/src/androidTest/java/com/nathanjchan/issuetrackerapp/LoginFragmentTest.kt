@@ -8,7 +8,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.nathanjchan.issuetrackerapp.ui.fragment.LoginFragment
+import com.nathanjchan.issuetrackerapp.ui.login.LoginFragment
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
