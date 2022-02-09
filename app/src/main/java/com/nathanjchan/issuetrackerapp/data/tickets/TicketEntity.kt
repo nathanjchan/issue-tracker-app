@@ -1,8 +1,10 @@
 package com.nathanjchan.issuetrackerapp.data.tickets
 
 import androidx.room.ColumnInfo
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+@Entity(tableName = "tickets")
 data class TicketEntity(
     @PrimaryKey val ticketId: Long,
     @ColumnInfo(name = "timestamp_of_creation") val timestampOfCreation: Long,

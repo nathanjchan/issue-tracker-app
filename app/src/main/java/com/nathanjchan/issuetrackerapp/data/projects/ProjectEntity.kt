@@ -1,8 +1,10 @@
 package com.nathanjchan.issuetrackerapp.data.projects
 
 import androidx.room.ColumnInfo
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+@Entity(tableName = "projects")
 data class ProjectEntity(
     @PrimaryKey val projectId: Long,
     @ColumnInfo(name = "timestamp_of_creation") val timestampOfCreation: Long,
